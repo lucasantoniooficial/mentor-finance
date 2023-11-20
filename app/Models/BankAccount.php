@@ -51,7 +51,7 @@ class BankAccount extends Model
                 DB::raw('bank_accounts.balance - SUM(payments.amount) as balance')
             ])
             ->join('payments', 'payments.bank_account_id', 'bank_accounts.id')
-            ->whereIn('payments.status', ['Pednente', 'Pago'])
+            ->whereIn('payments.status', ['Pendente', 'Pago'])
             ->whereMonth('payments.due_date', now()->month)
             ->groupBy('bank_accounts.id');
     }
